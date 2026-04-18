@@ -4,7 +4,7 @@ import { AppContext } from '../context/AppContext'
 
 const WELCOME = {
   role: 'assistant',
-  content: "Hi there! 👋 I'm Prescripto's AI health assistant. I can help you find the right specialist, explain how booking works, or answer general health questions. How can I help?",
+  content: "Hi there! 👋 I'm MedCare's AI health assistant. I can help you find the right specialist, explain how booking works, or answer general health questions. How can I help?",
 }
 
 const QUICK_QUESTIONS = [

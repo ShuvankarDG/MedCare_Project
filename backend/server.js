@@ -112,7 +112,7 @@ app.use((req, res) => {
 
 // ─── Start ─────────────────────────────────────────────────────────────────
 app.listen(PORT, () => {
-  console.log(`\n🚀 Prescripto API v2 running on http://localhost:${PORT}`);
+  console.log(`\n🚀 MedCare API v2 running on http://localhost:${PORT}`);
   console.log(
     `   Chatbot: ${process.env.GROQ_API_KEY && process.env.GROQ_API_KEY !== "gsk_your_groq_api_key_here" ? "✅ Groq AI (LLaMA 3)" : "⚠️  Rule-based fallback (add GROQ_API_KEY for AI)"}`,
   );
