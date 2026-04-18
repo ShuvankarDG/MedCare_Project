@@ -21,7 +21,8 @@ A full-stack doctor appointment booking platform built with the **MERN stack**. 
 
 ## 🗂️ Project Structure
 
-prescripto/
+```
+MedCare/
 ├── backend/                   # Node.js + Express REST API
 │   ├── src/
 │   │   ├── config/            # MongoDB & Cloudinary setup
@@ -38,8 +39,7 @@ prescripto/
     │   └── pages/             # All user and admin pages
     ├── index.html
     └── package.json
-
-    ---
+```
 
 ## ⚙️ Tech Stack
 
@@ -59,7 +59,7 @@ prescripto/
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/YOUR_USERNAME/prescripto.git
+git clone https://github.com/ShuvankarDG/MedCare_Project.git
 cd prescripto
 ```
 
