@@ -190,7 +190,7 @@ export const paymentStripe = async (req, res) => {
       cancel_url: `${process.env.FRONTEND_URL}/verify?success=false&appointmentId={CHECKOUT_SESSION_ID}`,
       line_items: [{
         price_data: {
-          currency: 'usd',
+          currency: 'bdt',
           product_data: {
             name: `Appointment with Dr. ${appt.docData.name}`,
             description: `${appt.slotDate} at ${appt.slotTime}`,
