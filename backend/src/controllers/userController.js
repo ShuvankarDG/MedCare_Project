@@ -186,8 +186,8 @@ export const paymentStripe = async (req, res) => {
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
     const session = await stripe.checkout.sessions.create({
-      success_url: `${origin}/verify?success=true&appointmentId=${appt._id}`,
-      cancel_url: `${origin}/verify?success=false&appointmentId=${appt._id}`,
+      success_url: `${process.env.FRONTEND_URL}/verify?success=true&appointmentId={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.FRONTEND_URL}/verify?success=false&appointmentId={CHECKOUT_SESSION_ID}`,
       line_items: [{
         price_data: {
           currency: 'usd',
