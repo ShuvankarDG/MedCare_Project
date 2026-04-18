@@ -11,6 +11,7 @@ import chatRouter from "./src/routes/chatRoute.js";
 
 // ─── App Setup ─────────────────────────────────────────────────────────────
 const app = express();
+app.set('trust proxy', 1);
 const PORT = process.env.PORT || 4000;
 
 // ─── Database & Services ───────────────────────────────────────────────────
@@ -114,7 +115,7 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log(`\n🚀 MedCare API v2 running on http://localhost:${PORT}`);
   console.log(
-    `   Chatbot: ${process.env.GROQ_API_KEY && process.env.GROQ_API_KEY !== "gsk_your_groq_api_key_here" ? "✅ Groq AI (LLaMA 3)" : "⚠️  Rule-based fallback (add GROQ_API_KEY for AI)"}`,
+    `   Chatbot: ${process.env.GEMINI_API_KEY ? "✅ Gemini AI (gemini-1.5-flash)" : "⚠️  Rule-based fallback (add GEMINI_API_KEY for AI)"}`,
   );
   console.log(
     `   Email notifications: ${process.env.EMAIL_USER ? "✅ Enabled" : "⚠️  Disabled (optional)"}`,

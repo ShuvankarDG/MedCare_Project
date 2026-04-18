@@ -2,8 +2,8 @@ import contactModel from '../models/contactModel.js'
 
 // ──────────────────────────────────────────────────────────────────────────────
 //  CHATBOT CONTROLLER
-//  Primary:  Groq API (FREE — llama-3.3-70b-versatile, ~14,400 req/day)
-//            Sign up at https://console.groq.com/keys
+//  Primary:  Google Gemini API (FREE — gemini-1.5-flash)
+//            Sign up at https://aistudio.google.com/apikey
 //  Fallback: Rule-based smart responder (works even without a key)
 // ──────────────────────────────────────────────────────────────────────────────
 
@@ -20,7 +20,7 @@ Guidelines:
 - Be polite, warm, and engaging
 - Avoid unnecessary repetition or filler
 - Use examples when helpful
-- If unsure, say you’re not certain instead of guessing
+- If unsure, say you're not certain instead of guessing
 - Do not make up facts
 
 Health-related queries:
@@ -36,31 +36,39 @@ Conversation style:
 
 Your priority is to be genuinely useful, trustworthy, and easy to talk to.`
 
-// ─── Groq API call ─────────────────────────────────────────────────────────
-const callGroq = async (messages) => {
-  const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
-    },
-    body: JSON.stringify({
-      model: 'llama-3.3-70b-versatile',
-      messages: [
-        { role: 'system', content: SYSTEM_PROMPT },
-        ...messages
-      ],
-      max_tokens: 800,
-      temperature: 0.9,
-    }),
-  })
+// ─── Gemini API call ───────────────────────────────────────────────────────
+const callGemini = async (messages) => {
+  // Build conversation history for Gemini
+  const contents = messages.map((msg) => ({
+    role: msg.role === 'assistant' ? 'model' : 'user',
+    parts: [{ text: msg.content }],
+  }))
+
+  const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents,
+        systemInstruction: {
+          parts: [{ text: SYSTEM_PROMPT }],
+        },
+        generationConfig: {
+          temperature: 0.9,
+          maxOutputTokens: 800,
+        },
+      }),
+    }
+  )
 
   if (!response.ok) {
-    throw new Error('Groq API error')
+    const errData = await response.json()
+    throw new Error(`Gemini API error: ${JSON.stringify(errData)}`)
   }
 
   const data = await response.json()
-  return data.choices[0].message.content
+  return data.candidates[0].content.parts[0].text
 }
 
 // ─── Rule-based fallback ───────────────────────────────────────────────────
@@ -147,13 +155,13 @@ export const chatWithBot = async (req, res) => {
 
     const lastMessage = messages[messages.length - 1]?.content || ''
 
-    // Try Groq first if key is configured
-    if (process.env.GROQ_API_KEY && process.env.GROQ_API_KEY !== 'gsk_your_groq_api_key_here') {
+    // Try Gemini first if key is configured
+    if (process.env.GEMINI_API_KEY) {
       try {
-        const reply = await callGroq(messages)
-        return res.json({ success: true, reply, source: 'groq' })
-      } catch (groqError) {
-        console.warn('Groq API failed, using fallback:', groqError.message)
+        const reply = await callGemini(messages)
+        return res.json({ success: true, reply, source: 'gemini' })
+      } catch (geminiError) {
+        console.warn('Gemini API failed, using fallback:', geminiError.message)
       }
     }
 
