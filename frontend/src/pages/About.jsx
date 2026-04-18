@@ -2,9 +2,9 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const TEAM = [
-  { name: 'Dr. Sarah Mitchell', role: 'Chief Medical Officer', emoji: '👩‍⚕️' },
-  { name: 'James Chen', role: 'Head of Technology', emoji: '👨‍💻' },
-  { name: 'Dr. Riya Patel', role: 'Patient Experience Lead', emoji: '👩‍🔬' },
+  { name: 'Dr. Shuvankar Das', role: 'Chief Medical Officer', emoji: '👩‍⚕️' },
+  { name: 'Dr.Ashraf Chowdhury', role: 'Head of Technology', emoji: '👨‍💻' },
+  { name: 'Dr. Hrittika Dutta', role: 'Patient Experience Lead', emoji: '👩‍🔬' },
 ]
 
 const VALUES = [
