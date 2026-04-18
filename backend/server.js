@@ -115,9 +115,6 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log(`\n🚀 MedCare API v2 running on http://localhost:${PORT}`);
   console.log(
-    `   Chatbot: ${process.env.GEMINI_API_KEY ? "✅ Gemini AI (gemini-1.5-flash)" : "⚠️  Rule-based fallback (add GEMINI_API_KEY for AI)"}`,
-  );
-  console.log(
-    `   Email notifications: ${process.env.EMAIL_USER ? "✅ Enabled" : "⚠️  Disabled (optional)"}`,
+    `   Chatbot: ${process.env.GEMINI_API_KEY ? "✅ Gemini AI (gemini-2.0-flash)" : "⚠️  Rule-based fallback (add GEMINI_API_KEY for AI)"}`,
   );
 });
