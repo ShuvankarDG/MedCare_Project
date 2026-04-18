@@ -178,19 +178,19 @@ export const cancelAppointment = async (req, res) => {
 export const paymentStripe = async (req, res) => {
   try {
     const { appointmentId } = req.body
-    const { origin } = req.headers
+    
 
     const appt = await appointmentModel.findById(appointmentId)
     if (!appt || appt.cancelled)
       return res.json({ success: false, message: 'Appointment cancelled or not found' })
 
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
-    const session = await stripe.checkout.sessions.create({
-      success_url: `${process.env.FRONTEND_URL}/verify?success=true&appointmentId={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.FRONTEND_URL}/verify?success=false&appointmentId={CHECKOUT_SESSION_ID}`,
+      const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
+      const session = await stripe.checkout.sessions.create({
+      success_url: `${process.env.FRONTEND_URL}/verify?success=true&appointmentId=${appt._id}`,
+      cancel_url: `${process.env.FRONTEND_URL}/verify?success=false&appointmentId=${appt._id}`,
       line_items: [{
         price_data: {
-          currency: 'bdt',
+          currency: 'bdt',        
           product_data: {
             name: `Appointment with Dr. ${appt.docData.name}`,
             description: `${appt.slotDate} at ${appt.slotTime}`,
