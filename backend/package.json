@@ -1,7 +1,7 @@
 {
-  "name": "prescripto-backend-v2",
+  "name": "MedCare-backend",
   "version": "2.0.0",
-  "description": "Prescripto Doctor Appointment Booking - Backend API v2",
+  "description": "MedCare Doctor Appointment Booking - Backend API",
   "type": "module",
   "main": "server.js",
   "scripts": {

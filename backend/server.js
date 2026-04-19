@@ -11,7 +11,7 @@ import chatRouter from "./src/routes/chatRoute.js";
 
 // ─── App Setup ─────────────────────────────────────────────────────────────
 const app = express();
-app.set('trust proxy', 1);
+app.set("trust proxy", 1);
 const PORT = process.env.PORT || 4000;
 
 // ─── Database & Services ───────────────────────────────────────────────────
@@ -83,7 +83,7 @@ app.use("/api/contact", chatRouter); // shares the same router (submitContact li
 app.get("/", (req, res) => {
   res.json({
     status: "ok",
-    message: "Prescripto API v2 is running",
+    message: "MedCare API v2 is running",
     timestamp: new Date().toISOString(),
     endpoints: {
       admin: "/api/admin",
@@ -103,17 +103,15 @@ app.use((err, req, res, next) => {
 
 // 404
 app.use((req, res) => {
-  res
-    .status(404)
-    .json({
-      success: false,
-      message: `Route ${req.method} ${req.path} not found`,
-    });
+  res.status(404).json({
+    success: false,
+    message: `Route ${req.method} ${req.path} not found`,
+  });
 });
 
 // ─── Start ─────────────────────────────────────────────────────────────────
 app.listen(PORT, () => {
-  console.log(`\n🚀 MedCare API v2 running on http://localhost:${PORT}`);
+  console.log(`\n🚀 MedCare API running on http://localhost:${PORT}`);
   console.log(
     `   Chatbot: ${process.env.GEMINI_API_KEY ? "✅ Gemini AI (gemini-2.0-flash)" : "⚠️  Rule-based fallback (add GEMINI_API_KEY for AI)"}`,
   );
