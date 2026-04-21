@@ -50,25 +50,9 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
-        <div
-          onClick={() => navigate("/")}
-          className="flex items-center gap-2.5 cursor-pointer group"
-        >
-          <div className="w-9 h-9 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-md group-hover:shadow-glow transition-all duration-300">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"
-                fill="white"
-              />
-              <path
-                d="M11 8h2v8h-2zM7 10h2v4H7zM15 10h2v4h-2z"
-                fill="rgba(255,255,255,0.4)"
-              />
-            </svg>
-          </div>
-          <span className="text-xl font-display font-800 text-gray-900 tracking-tight">
-            MedCare
-          </span>
+        
+        <div onClick={() => navigate("/")} className="flex items-center cursor-pointer">
+          <img src="/medcare-logo.svg" alt="MedCare" className="h-10" />
         </div>
 
         {/* Desktop Nav */}
