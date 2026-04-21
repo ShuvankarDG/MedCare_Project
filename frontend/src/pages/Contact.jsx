@@ -80,17 +80,17 @@ const Contact = () => {
           {
             icon: "📍",
             title: "Office",
-            lines: ["Suite 350, Washington DC", "United States"],
+            lines: ["Mozaffor Nogor, Polytechnic", "Chattogram, Bangladesh"],
           },
           {
             icon: "📞",
             title: "Phone",
-            lines: ["+1-212-456-7890", "Mon–Fri 9am–6pm EST"],
+            lines: ["+880-1818-100200", "24/7 customer support"],
           },
           {
             icon: "✉️",
             title: "Email",
-            lines: ["support@MedCare.com", "We reply within 24 hours"],
+            lines: ["support@medare.com", "We reply within 24 hours"],
           },
         ].map((c) => (
           <div

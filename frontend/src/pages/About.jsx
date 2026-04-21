@@ -100,9 +100,9 @@ const About = () => {
         </div>
         <div className="bg-gradient-to-br from-primary-light to-blue-50 rounded-3xl p-10 flex items-center justify-center">
           <div className="text-center">
-            <p className="text-7xl font-display font-800 text-primary/20">Rx</p>
-            <p className="text-primary font-semibold mt-2">Est. 2024</p>
-            <p className="text-gray-400 text-sm">Washington DC, USA</p>
+            <p className="text-7xl font-display font-800 text-primary/20">MedCare</p>
+            <p className="text-primary font-semibold mt-2">Est. 2026</p>
+            <p className="text-gray-400 text-sm">Chattogram, Bangladesh</p>
           </div>
         </div>
       </div>
