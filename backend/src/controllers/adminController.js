@@ -65,6 +65,39 @@ export const addDoctor = async (req, res) => {
   }
 }
 
+// ─── Edit Doctor ───────────────────────────────────────────────────────────
+export const editDoctor = async (req, res) => {
+  try {
+    const { docId, name, speciality, degree, experience, about, fees, address, available } = req.body
+    const imageFile = req.file
+
+    if (!docId)
+      return res.json({ success: false, message: 'Doctor ID is required' })
+
+    const updateData = {
+      name,
+      speciality,
+      degree,
+      experience,
+      about,
+      fees: Number(fees),
+      address: JSON.parse(address),
+      available: available === 'true',
+    }
+
+    if (imageFile) {
+      const upload = await cloudinary.uploader.upload(imageFile.path, { resource_type: 'image' })
+      updateData.image = upload.secure_url
+    }
+
+    await doctorModel.findByIdAndUpdate(docId, updateData)
+    res.json({ success: true, message: 'Doctor updated successfully' })
+  } catch (error) {
+    console.log(error)
+    res.json({ success: false, message: error.message })
+  }
+}
+
 // ─── All Doctors ───────────────────────────────────────────────────────────
 export const allDoctors = async (req, res) => {
   try {

@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { AdminContext } from '../../context/AdminContext'
 
 const DoctorsList = () => {
   const { doctors, aToken, getAllDoctors, changeAvailability, deleteDoctor } = useContext(AdminContext)
+  const navigate = useNavigate()
 
   useEffect(() => { if (aToken) getAllDoctors() }, [aToken])
 
@@ -27,20 +29,29 @@ const DoctorsList = () => {
                   <p className='font-semibold text-gray-800 text-sm truncate'>{doc.name}</p>
                   <p className='text-primary text-xs mt-0.5 truncate'>{doc.speciality}</p>
                   <div className='flex items-center justify-between mt-2'>
-                  <div className='flex items-center gap-1.5'>
-                    <input
-                      type='checkbox' checked={doc.available} readOnly onChange={() => changeAvailability(doc._id)}
-                      className='cursor-pointer accent-primary w-3.5 h-3.5' />
-                    <span className='text-xs text-gray-500'>{doc.available ? 'Available' : 'Unavailable'}</span>
+                    <div className='flex items-center gap-1.5'>
+                      <input
+                        type='checkbox' checked={doc.available} readOnly onChange={() => changeAvailability(doc._id)}
+                        className='cursor-pointer accent-primary w-3.5 h-3.5' />
+                      <span className='text-xs text-gray-500'>{doc.available ? 'Available' : 'Unavailable'}</span>
+                    </div>
+                    <div className='flex items-center gap-1'>
+                      <button
+                        onClick={() => navigate(`/admin/edit-doctor/${doc._id}`)}
+                        className='text-xs text-blue-400 hover:text-blue-600 hover:bg-blue-50 px-2 py-1 rounded-lg transition-all'
+                        title='Edit doctor'
+                      >
+                        ✏️
+                      </button>
+                      <button
+                        onClick={() => deleteDoctor(doc._id)}
+                        className='text-xs text-red-400 hover:text-red-600 hover:bg-red-50 px-2 py-1 rounded-lg transition-all'
+                        title='Remove doctor'
+                      >
+                        🗑️
+                      </button>
+                    </div>
                   </div>
-                  <button
-                    onClick={() => deleteDoctor(doc._id)}
-                    className='text-xs text-red-400 hover:text-red-600 hover:bg-red-50 px-2 py-1 rounded-lg transition-all'
-                    title='Remove doctor'
-                  >
-                    🗑️
-                  </button>
-                </div>
                   {doc.rating > 0 && <p className='text-xs text-amber-500 mt-1'>⭐ {doc.rating} ({doc.totalReviews})</p>}
                 </div>
               </div>

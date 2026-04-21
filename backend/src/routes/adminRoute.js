@@ -2,6 +2,7 @@ import express from 'express'
 import {
   loginAdmin,
   addDoctor,
+  editDoctor,
   allDoctors,
   changeAvailability,
   appointmentsAdmin,
@@ -19,6 +20,7 @@ const adminRouter = express.Router()
 adminRouter.post('/login',              loginAdmin)
 
 adminRouter.post('/add-doctor',         authAdmin, upload.single('image'), addDoctor)
+adminRouter.post('/edit-doctor',        authAdmin, upload.single('image'), editDoctor)
 adminRouter.get('/all-doctors',         authAdmin, allDoctors)
 adminRouter.post('/change-availability', authAdmin, changeAvailability)
 adminRouter.post('/delete-doctor',      authAdmin, deleteDoctor)
