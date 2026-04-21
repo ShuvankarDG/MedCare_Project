@@ -1,23 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="280" height="60" viewBox="0 0 280 60">
-  <!-- Dark pill background -->
-  <rect x="0" y="0" width="280" height="60" rx="14" fill="#1e1b4b"/>
-
-  <!-- Indigo circle icon -->
-  <circle cx="38" cy="30" r="22" fill="#4f46e5"/>
-
-  <!-- Cross -->
-  <rect x="30" y="18" width="14" height="24" rx="3" fill="white"/>
-  <rect x="24" y="24" width="26" height="12" rx="3" fill="white"/>
-
-  <!-- Heartbeat line -->
-  <polyline points="24,46 29,46 33,40 38,52 43,42 47,46 52,46" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <!-- MedCare text -->
-  <text x="70" y="35" font-family="Arial, sans-serif" font-size="22" font-weight="600" fill="white">MedCare</text>
-
-  <!-- Tagline -->
-  <text x="71" y="50" font-family="Arial, sans-serif" font-size="7.5" font-weight="400" letter-spacing="2" fill="white" opacity="0.65">HEALTH CARE PLATFORM</text>
-
-  <!-- Accent dot -->
-  <circle cx="268" cy="30" r="4" fill="#818cf8"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="60" viewBox="0 0 260 60">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4F6EF7"/>
+      <stop offset="100%" style="stop-color:#0ECAD4"/>
+    </linearGradient>
+    <linearGradient id="textgrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4F6EF7"/>
+      <stop offset="100%" style="stop-color:#0ECAD4"/>
+    </linearGradient>
+  </defs>
+  <path d="M30 6 L54 15 L54 38 Q54 52 30 58 Q6 52 6 38 L6 15 Z" fill="url(#grad1)"/>
+  <rect x="24" y="19" width="12" height="22" rx="3" fill="white" opacity="0.95"/>
+  <rect x="16" y="27" width="28" height="11" rx="3" fill="white" opacity="0.95"/>
+  <text x="66" y="36" font-family="Plus Jakarta Sans, Arial, sans-serif" font-size="22" font-weight="700" fill="#1a1a2e">Med</text>
+  <text x="108" y="36" font-family="Plus Jakarta Sans, Arial, sans-serif" font-size="22" font-weight="700" fill="#4F6EF7">Care</text>
+  <text x="67" y="50" font-family="DM Sans, Arial, sans-serif" font-size="8" font-weight="400" letter-spacing="1.5" fill="#6b7280">YOUR PARTNER IN HEALTH</text>
+  <rect x="67" y="53" width="140" height="2" rx="1" fill="url(#textgrad)"/>
 </svg>
