@@ -29,6 +29,7 @@ import Dashboard from './pages/admin/Dashboard'
 import AllAppointments from './pages/admin/AllAppointments'
 import AddDoctor from './pages/admin/AddDoctor'
 import DoctorsList from './pages/admin/DoctorsList'
+import EditDoctor from './pages/admin/EditDoctor'
 import DoctorDashboard from './pages/doctor/DoctorDashboard'
 import DoctorAppointments from './pages/doctor/DoctorAppointments'
 import DoctorProfile from './pages/doctor/DoctorProfile'
@@ -73,6 +74,7 @@ const AdminLayout = () => {
             <Route path='/appointments'        element={<AdminGuard><AllAppointments /></AdminGuard>} />
             <Route path='/add-doctor'          element={<AdminGuard><AddDoctor /></AdminGuard>} />
             <Route path='/doctors'             element={<AdminGuard><DoctorsList /></AdminGuard>} />
+            <Route path='/edit-doctor/:docId' element={<AdminGuard><EditDoctor /></AdminGuard>} />
             <Route path='/doctor-dashboard'    element={<DoctorGuard><DoctorDashboard /></DoctorGuard>} />
             <Route path='/doctor-appointments' element={<DoctorGuard><DoctorAppointments /></DoctorGuard>} />
             <Route path='/doctor-profile'      element={<DoctorGuard><DoctorProfile /></DoctorGuard>} />
