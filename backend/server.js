@@ -83,7 +83,7 @@ app.use("/api/contact", chatRouter); // shares the same router (submitContact li
 app.get("/", (req, res) => {
   res.json({
     status: "ok",
-    message: "MedCare API v2 is running",
+    message: "MedCare API is running",
     timestamp: new Date().toISOString(),
     endpoints: {
       admin: "/api/admin",

@@ -193,7 +193,7 @@ const Chatbot = () => {
               </svg>
             </button>
           </div>
-          <p className="text-center text-xs text-gray-300 mt-2">Powered by Groq AI · Not a substitute for medical advice</p>
+          <p className="text-center text-xs text-gray-300 mt-2">Powered by Gemini · Not a substitute for medical advice</p>
         </div>
       </div>
     </>

@@ -10,7 +10,7 @@ A full-stack doctor appointment booking platform built with the **MERN stack**. 
 - 🩺 Browse & filter doctors by specialty
 - 📅 Book, cancel & track appointments
 - 💳 Stripe payment integration
-- 🤖 Groq-powered AI chatbot (LLaMA 3)
+- 🤖 Gemini flash 2.0
 - 🖼️ Cloudinary image uploads
 - ⭐ Doctor ratings & reviews
 - 🔒 JWT authentication
@@ -51,7 +51,7 @@ MedCare/
 | Auth | JWT |
 | Payments | Stripe |
 | Storage | Cloudinary |
-| AI Chatbot | Groq (LLaMA 3.3 70B) |
+| AI Chatbot | GEMINI flash 2.0 |
 
 ---
 
@@ -87,7 +87,7 @@ See `backend/.env.example` for all required variables including:
 - `JWT_SECRET`
 - `STRIPE_SECRET_KEY`
 - `CLOUDINARY_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`
-- `GROQ_API_KEY`
+- `GEMINI_API_KEY`
 
 ---
 
